@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const urlstr = "http://www.baidu.com?name=zhangsan&age=18&sex=nan#"
+        const resolve = (url) => {
+            const index1 = url.indexOf('?')
+            const index2 = url.indexOf('#')
+            const  newarr = url.slice(index1 + 1, index2).split('&')
+            // console.log(newarr);
+           const arr = newarr.reduce((pre, curr) => { 
+                const [key, value] = curr.split('=')
+                pre[key] = value
+                return pre
+            }, {})
+            // console.log(arr);
+            return arr
+        }
+        console.log(resolve(urlstr));
+    </script>
+</body>
+
+</html>
